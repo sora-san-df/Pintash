@@ -1,0 +1,24 @@
+.card_body{
+    display: flex;
+    justify-content: center;
+    
+}
+.skeleton{
+    animation: skeleton-loading 1s linear infinite alternate;
+    display: inline-block;
+    width: 370px; 
+    height: 370px;
+    border-radius: 5px 5px 0 0; 
+    margin: 40px 10px 0 10px; 
+    border-radius: 5px;
+    cursor: pointer; 
+}
+
+@keyframes skeleton-loading{
+    0%{
+        background-color: hsl(0, 0%, 70%);
+    }
+    100%{
+        background-color: hsl(0, 0%, 95%);
+    }
+}

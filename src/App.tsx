@@ -1,15 +1,19 @@
 import {Formik, Field,Form,ErrorMessage} from 'formik'; 
 import {IoIosArrowDown} from 'react-icons/io'; 
-import { Key, useState } from 'react';
-import {MdNotificationsActive} from 'react-icons/md'; 
+import {  useState } from 'react';
+import {MdNotificationsActive} from 'react-icons/md';
 import './styles/App.css'; 
 import './styles/content.css'; 
 import './styles/article.css'; 
+import {LazyLoadImage} from "react-lazy-load-image-component";
+import { Skeleton } from './skeletons/Skeleton';
+
 function App() {
 
   const [estilos, setEstilos]= useState<String|null>(null);
   const [photo, setPhotos] = useState<any>(); 
-  console.log(typeof(photo))
+  const [skeleton, setSkeleton] = useState<boolean>(false); 
+  console.log(skeleton)
   const open = (url: URL) => window.open(url); 
   const setStyles = (id: String) =>{
       return setEstilos(id); 
@@ -31,6 +35,10 @@ function App() {
           //Llamando a la api de unplash
           console.log(result); 
           setPhotos(result.results); 
+          setSkeleton(true);
+          setTimeout(()=>{
+            setSkeleton(false)
+          },1000)
         }}
         >
           <Form className='formContainer'>
@@ -58,17 +66,30 @@ function App() {
           
         </Formik>
       </header>
-
-      <div className="ImagesContainer">
-        <div className='ImagesContainer_center'>
-            {photo ? photo.map((photos)=>
-              <article key={photos.id} onClick={()=>open(photos.links.html)}>
-                  <img src={photos.urls.regular} />
-                  <p>{[photos.description, photos.alt_description].join('-')}</p>
-              </article>
-            ): null}
-        </div>
-      </div>
+      
+      {skeleton? <Skeleton/>:
+           <div className="ImagesContainer">
+           <div className='ImagesContainer_center'>
+          
+               {photo ? photo.map((photos)=>
+                
+                 <article key={photos.id} onClick={()=>open(photos.links.html)}>
+                     {/* <img src={photos.urls.regular} loading='lazy' /> */}
+                     
+                    
+                     <LazyLoadImage
+                       src={photos.urls.regular}
+                       width={370}
+                       effect='blur'
+                     />
+                     
+                     <p>{[photos.description, photos.alt_description].join('-')}</p>
+                 </article>
+               ): null}
+           </div>
+         </div>
+      }
+     
     </div>
   )
 }
