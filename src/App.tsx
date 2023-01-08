@@ -3,12 +3,14 @@ import {IoIosArrowDown} from 'react-icons/io';
 import { Key, useState } from 'react';
 import {MdNotificationsActive} from 'react-icons/md'; 
 import './styles/App.css'; 
+import './styles/content.css'; 
+import './styles/article.css'; 
 function App() {
 
   const [estilos, setEstilos]= useState<String|null>(null);
   const [photo, setPhotos] = useState<any>(); 
   console.log(typeof(photo))
-  // const open = url => window.open(url); 
+  const open = (url: URL) => window.open(url); 
   const setStyles = (id: String) =>{
       return setEstilos(id); 
   }
@@ -58,9 +60,9 @@ function App() {
       </header>
 
       <div className="ImagesContainer">
-        <div className='imagesCenter_center'>
+        <div className='ImagesContainer_center'>
             {photo ? photo.map((photos)=>
-              <article key={photos.id} onClick={()=>open(photos.link.html)}>
+              <article key={photos.id} onClick={()=>open(photos.links.html)}>
                   <img src={photos.urls.regular} />
                   <p>{[photos.description, photos.alt_description].join('-')}</p>
               </article>

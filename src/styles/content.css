@@ -1,0 +1,10 @@
+.ImagesContainer{
+    display: flex;
+    background-color: #eee;
+    justify-content: center;   
+}
+
+.ImagesContainer_center{
+    column-count: 3;
+    width: 1200px;
+}
