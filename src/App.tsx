@@ -8,6 +8,7 @@ import './styles/article.css';
 import {LazyLoadImage} from "react-lazy-load-image-component";
 import { Skeleton } from './skeletons/Skeleton';
 
+
 function App() {
 
   const [estilos, setEstilos]= useState<String|null>(null);
@@ -59,6 +60,8 @@ function App() {
                 {/**the notifications that if it is clicked it will display a modal with all of the notif */}
             <div><MdNotificationsActive></MdNotificationsActive></div>
             {/**A div that if it is clicked sends to check your profile */}
+
+            
             <div>Profile</div>
             </div>
             
