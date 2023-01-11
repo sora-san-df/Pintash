@@ -3,6 +3,8 @@
     justify-content: center;
     
 }
+
+
 .skeleton{
     animation: skeleton-loading 1s linear infinite alternate;
     display: inline-block;
