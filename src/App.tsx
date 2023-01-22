@@ -7,6 +7,8 @@ import './styles/content.css';
 import './styles/article.css'; 
 import {LazyLoadImage} from "react-lazy-load-image-component";
 import { Skeleton } from './skeletons/Skeleton';
+import {useNavigate} from 'react-router-dom';
+
 
 
 function App() {
@@ -14,11 +16,21 @@ function App() {
   const [estilos, setEstilos]= useState<String|null>(null);
   const [photo, setPhotos] = useState<any>(); 
   const [skeleton, setSkeleton] = useState<boolean>(false); 
-  console.log(skeleton)
+  
+  const toProfileNavi = useNavigate();
+ 
+
   const open = (url: URL) => window.open(url); 
   const setStyles = (id: String) =>{
       return setEstilos(id); 
   }
+
+  //redirect the page to the profile component
+  const toProfile = ()=>{
+    toProfileNavi('/profile');
+  }
+
+ 
 
   return (
     <div>
@@ -45,7 +57,7 @@ function App() {
           <Form className='formContainer'>
             {/**A div for the home icon*/}
             <div className="leftContainer">
-            <div className={estilos==='1'?'leftContainerStyles': 'null'} onClick={()=>setStyles('1')}>Home</div>
+            <div className={estilos==='1'?'leftContainerStyles': 'null'} onClick={()=>{setStyles('1')}}>Home</div>
             <div className={estilos==='2'?'leftContainerStyles': 'null'} onClick={()=>setStyles('2')}>Create <IoIosArrowDown/></div>
             </div>
             
@@ -54,7 +66,7 @@ function App() {
               <option value="create_idea_pin">create idea Pin</option>
               <option value="create_pin">create pin</option>
             </Field> */}
-            <Field name="search"/>
+            <Field  name="search" placeholder="Search an image"/>
 
             <div className="rigthContainer">
                 {/**the notifications that if it is clicked it will display a modal with all of the notif */}
@@ -62,7 +74,7 @@ function App() {
             {/**A div that if it is clicked sends to check your profile */}
 
             
-            <div>Profile</div>
+            <div onClick={toProfile}>Profile</div>
             </div>
             
           </Form>
@@ -92,7 +104,7 @@ function App() {
            </div>
          </div>
       }
-     
+
     </div>
   )
 }

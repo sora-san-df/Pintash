@@ -1,0 +1,51 @@
+.profileContainer{
+    height:80vh; 
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center; 
+    font-size: 2rem;
+}
+
+.profileContainer figure{
+    width: 180px; 
+    height: 180px;
+}
+
+.profileImage{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+.profileStats{
+    display: flex;
+    cursor: pointer;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.profileOptions{
+    display: flex;
+    gap: 40px; 
+    cursor: pointer;
+    list-style: none;
+}
+
+.profileOptions li:last-child{
+    border-radius: 20px;
+    color: #000;
+    text-align: center;
+
+}
+.profileOptions li:last-child:hover{ 
+    color: rgb(85, 85, 85);
+}
+
+.licka{
+    width: 100px;
+    height: 100px; 
+    margin-top: 40px;
+}
+
+
